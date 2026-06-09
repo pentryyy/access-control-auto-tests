@@ -1,12 +1,12 @@
 from locust import HttpUser, task, constant
 import os
 
-class AccessControlUser(HttpUser):
+class AccessControlIntegrationUser(HttpUser):
     host = "http://localhost:8082"
     wait_time = constant(0.1)
     
     def on_start(self):
-        image_path = r"C:\Users\pentryyy\Desktop\pre_backend_stuff\img\face4.jpg"
+        image_path = r"images/face4.jpg"
         if not os.path.exists(image_path):
             raise FileNotFoundError(f"Файл не найден: {image_path}")
         with open(image_path, "rb") as f:
